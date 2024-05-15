@@ -3,7 +3,7 @@
 
 ## Introduction
 
-This project aims to build a machine learning pipeline using TensorFlow Extended (TFX) to predict whether a taxi passenger in Chicago will tip more than 20% of the fare or not. The pipeline includes several components such as data ingestion, data validation, data preprocessing, model training, model evaluation, and model deployment.
+This project aims to build a machine learning pipeline using TensorFlow Extended (TFX) to predict the costs of customer trips in advance in Chicago . The pipeline includes several components such as data ingestion, data validation, data preprocessing, model training, model evaluation, and model deployment.
 
 The main files in this project are:
 
