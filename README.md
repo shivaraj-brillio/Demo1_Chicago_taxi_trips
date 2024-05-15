@@ -73,3 +73,64 @@ export GCS_BUCKET_NAME=YOUR_BUCKET_NAME
 - TensorFlow Extended (TFX) Documentation: [https://www.tensorflow.org/tfx](https://www.tensorflow.org/tfx)
 - Google Cloud Vertex AI Documentation: [https://cloud.google.com/vertex-ai/docs](https://cloud.google.com/vertex-ai/docs)
 
+## Additional Information
+
+### Constants and Keys
+
+In our project, we use some constants and keys to make things work. Here they are:
+
+- **Numerical Features**: These are numbers like miles, fare, and seconds.
+- **Bucket Features**: Features related to location like pickup and dropoff points.
+- **Categorical Numerical Features**: Numbers represented in categories, like hours and months.
+- **Categorical String Features**: Strings that represent categories, like payment type and company.
+- **Label Key**: This tells us whether the passenger tipped more than 20% or not.
+- **Fare Key**: Helps us know the fare of the taxi ride.
+
+### Trainer and Transformer
+
+- `taxi_trainer.py`: This file trains our machine to learn from the data.
+- `taxi_transform.py`: It transforms the data into a form the machine can understand better.
+
+## `taxi_constants.py`
+
+This file defines various constants used throughout the project. Let's break down the key components:
+
+- **NUMERICAL_FEATURES**: Lists the numerical features present in the dataset, such as trip miles, fare, and trip seconds.
+- **BUCKET_FEATURES**: Identifies the features that are bucketized, including pickup and dropoff latitude and longitude.
+- **FEATURE_BUCKET_COUNT**: Specifies the number of buckets used for encoding each feature during preprocessing.
+- **CATEGORICAL_NUMERICAL_FEATURES**: Lists categorical features that are numerical, such as trip start hour, day, and month.
+- **CATEGORICAL_STRING_FEATURES**: Identifies categorical features stored as strings, such as payment type and company.
+- **VOCAB_SIZE**: Determines the size of the vocabulary used for encoding categorical features.
+- **OOV_SIZE**: Specifies the count of out-of-vocabulary buckets for unrecognized categorical features.
+- **LABEL_KEY**: Indicates the key for the label column, which in this case is 'tips'.
+- **FARE_KEY**: Specifies the key for the fare column.
+
+These constants provide essential information for data preprocessing and model training.
+
+## `taxi_transform.py`
+
+This file contains the preprocessing functions required to transform raw input data into a format suitable for model training. Here's a breakdown of its functionality:
+
+- **_make_one_hot**: This function encodes categorical features as one-hot tensors.
+- **_fill_in_missing**: Replaces missing values in a SparseTensor with default values.
+- **preprocessing_fn**: This callback function preprocesses the inputs using tf.transform. It performs the following transformations:
+  - Scales numerical features to z-scores.
+  - Bucketizes bucket features.
+  - Encodes categorical string features as one-hot tensors.
+  - Encodes categorical numerical features as one-hot tensors.
+  - Determines if a passenger is a big tipper based on fare and tip percentage.
+
+These preprocessing steps ensure that the input data is properly formatted and ready for model training.
+
+## `taxi_trainer.py`
+
+This file contains the training logic for the machine learning model. Let's explore its key components:
+
+- **_input_fn**: Generates features and labels for training and evaluation datasets.
+- **_get_tf_examples_serving_signature**: Returns a serving signature that accepts `tensorflow.Example`.
+- **_get_transform_features_signature**: Returns a serving signature that applies tf.Transform to features.
+- **export_serving_model**: Exports a Keras model for serving, including serving signatures.
+- **_build_keras_model**: Creates a DNN Keras model for classifying taxi data.
+- **run_fn**: Trains the model based on the provided arguments, including data accessors, transform output, and training settings.
+
+This file orchestrates the model training process, including data preprocessing, model construction, training, and exporting for serving.
