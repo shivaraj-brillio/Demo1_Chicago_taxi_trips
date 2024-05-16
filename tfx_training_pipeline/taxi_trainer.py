@@ -1,37 +1,23 @@
+# Import necessary libraries
 from typing import Dict, List, Text
-
 import os
 import glob
 from absl import logging
-
 import datetime
 import tensorflow as tf
 import tensorflow_transform as tft
-
 from tfx import v1 as tfx
 from tfx_bsl.public import tfxio
 from tensorflow_transform import TFTransformOutput
 
-# Imported files such as taxi_constants are normally cached, so changes are
-# not honored after the first import.  Normally this is good for efficiency, but
-# during development when we may be iterating code it can be a problem. To
-# avoid this problem during development, reload the file.
-import sys
-import importlib.util
-from google.cloud import storage
-
-# Define the Cloud Storage path
+# Import taxi_constants module from Cloud Storage
 bucket_name = "chicago_taxi_mlops_pipeline"
 blob_name = "models/taxi_constants.py"
-local_file_path = "/tmp/taxi_constants.py"  # Local path to download the file
-
-# Download the file from Cloud Storage
+local_file_path = "/tmp/taxi_constants.py"
 storage_client = storage.Client()
 bucket = storage_client.bucket(bucket_name)
 blob = bucket.blob(blob_name)
 blob.download_to_filename(local_file_path)
-
-# Load the module dynamically
 spec = importlib.util.spec_from_file_location("taxi_constants", local_file_path)
 taxi_constants = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(taxi_constants)
@@ -39,7 +25,6 @@ spec.loader.exec_module(taxi_constants)
 _LABEL_KEY = taxi_constants.LABEL_KEY
 
 _BATCH_SIZE = 40
-
 
 def _input_fn(file_pattern: List[Text],
               data_accessor: tfx.components.DataAccessor,
@@ -58,12 +43,12 @@ def _input_fn(file_pattern: List[Text],
       A dataset that contains (features, indices) tuple where features is a
         dictionary of Tensors, and indices is a single Tensor of label indices.
     """
+    # Create a dataset from the input files using the TFTransformOutput and batch size
     return data_accessor.tf_dataset_factory(
         file_pattern,
         tfxio.TensorFlowDatasetOptions(
             batch_size=batch_size, label_key=_LABEL_KEY),
         tf_transform_output.transformed_metadata.schema)
-
 
 def _get_tf_examples_serving_signature(model, tf_transform_output):
     """Returns a serving signature that accepts `tensorflow.Example`."""
@@ -89,8 +74,8 @@ def _get_tf_examples_serving_signature(model, tf_transform_output):
         # reverse-lookup (opposite of transform.py).
         return {'outputs': outputs}
 
+    # Define a serving function that takes in serialized tf.Example and returns model outputs
     return serve_tf_examples_fn
-
 
 def _get_transform_features_signature(model, tf_transform_output):
     """Returns a serving signature that applies tf.Transform to features."""
@@ -110,8 +95,8 @@ def _get_transform_features_signature(model, tf_transform_output):
         logging.info('eval_transformed_features = %s', transformed_features)
         return transformed_features
 
+    # Define a serving function that takes in serialized tf.Example and returns transformed features
     return transform_features_fn
-
 
 def export_serving_model(tf_transform_output, model, output_dir):
     """Exports a keras model for serving.
@@ -121,7 +106,7 @@ def export_serving_model(tf_transform_output, model, output_dir):
       model: A keras model to export for serving.
       output_dir: A directory where the model will be exported to.
     """
-    # The layer has to be saved to the model for keras tracking purposes.
+    # Save the transform layer to the model for serving
     model.tft_layer = tf_transform_output.transform_features_layer()
 
     signatures = {
@@ -131,8 +116,8 @@ def export_serving_model(tf_transform_output, model, output_dir):
             _get_transform_features_signature(model, tf_transform_output),
     }
 
+    # Save the model with serving signatures
     model.save(output_dir, save_format='tf', signatures=signatures)
-
 
 def _build_keras_model(tf_transform_output: TFTransformOutput
                        ) -> tf.keras.Model:
@@ -144,6 +129,7 @@ def _build_keras_model(tf_transform_output: TFTransformOutput
     Returns:
       A keras Model.
     """
+    # Create a dictionary of model inputs based on the transformed feature spec
     feature_spec = tf_transform_output.transformed_feature_spec().copy()
     feature_spec.pop(_LABEL_KEY)
 
@@ -152,12 +138,11 @@ def _build_keras_model(tf_transform_output: TFTransformOutput
         if isinstance(spec, tf.io.VarLenFeature):
             inputs[key] = tf.keras.layers.Input(shape=[None], name=key, dtype=spec.dtype, sparse=True)
         elif isinstance(spec, tf.io.FixedLenFeature):
-            # TODO(b/208879020): Move into schema such that spec.shape is [1] and not
-            # [] for scalars.
             inputs[key] = tf.keras.layers.Input(shape=spec.shape or [1], name=key, dtype=spec.dtype)
         else:
             raise ValueError('Spec type is not supported: ', key, spec)
 
+    # Define the model architecture using the inputs
     output = tf.keras.layers.Concatenate()(tf.nest.flatten(inputs))
     output = tf.keras.layers.Dense(100, activation='relu')(output)
     output = tf.keras.layers.Dense(70, activation='relu')(output)
@@ -165,7 +150,6 @@ def _build_keras_model(tf_transform_output: TFTransformOutput
     output = tf.keras.layers.Dense(20, activation='relu')(output)
     output = tf.keras.layers.Dense(1)(output)
     return tf.keras.Model(inputs=inputs, outputs=output)
-
 
 # TFX Trainer will call this function.
 def run_fn(fn_args: tfx.components.FnArgs):
@@ -176,11 +160,13 @@ def run_fn(fn_args: tfx.components.FnArgs):
     """
     tf_transform_output = tft.TFTransformOutput(fn_args.transform_output)
 
+    # Create training and evaluation datasets using the input function
     train_dataset = _input_fn(fn_args.train_files, fn_args.data_accessor,
                               tf_transform_output, _BATCH_SIZE)
     eval_dataset = _input_fn(fn_args.eval_files, fn_args.data_accessor,
                              tf_transform_output, _BATCH_SIZE)
 
+    # Build and compile the Keras model
     model = _build_keras_model(tf_transform_output)
 
     model.compile(
@@ -188,6 +174,7 @@ def run_fn(fn_args: tfx.components.FnArgs):
         optimizer=tf.keras.optimizers.Adam(learning_rate=0.001),
         metrics=[tf.keras.metrics.BinaryAccuracy()])
 
+    # Train the model using the training and evaluation datasets
     tensorboard_callback = tf.keras.callbacks.TensorBoard(
         log_dir=fn_args.model_run_dir, update_freq='batch')
 
@@ -198,5 +185,5 @@ def run_fn(fn_args: tfx.components.FnArgs):
         validation_steps=fn_args.eval_steps,
         callbacks=[tensorboard_callback])
 
-    # Export the model.
+    # Export the trained model with serving signatures
     export_serving_model(tf_transform_output, model, fn_args.serving_model_dir)
