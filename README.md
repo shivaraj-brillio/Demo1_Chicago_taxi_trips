@@ -1,5 +1,5 @@
 
-# Chicago Taxi Trips Predictor
+# Chicago Taxi Fare Prediction
 
 ## Introduction
 
