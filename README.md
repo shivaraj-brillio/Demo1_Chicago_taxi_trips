@@ -1,7 +1,7 @@
 
 # Chicago Taxi Fare Prediction
 
-![alt text](https://www.google.com/imgres?imgurl=https%3A%2F%2Fmiro.medium.com%2Fv2%2Fresize%3Afit%3A1400%2F0*p5J5Yvcd7PMfq5dA.jpg&tbnid=7dp4G5rgh4-JrM&vet=12ahUKEwjJzJyv2pGGAxXd3DgGHc1yB14QMygkegUIARCKAQ..i&imgrefurl=https%3A%2F%2Fmedium.com%2F%40yennhi95zz%2Fexploring-the-chicago-taxi-trips-dataset-visualizations-on-tableau-74b4b7fffb44&docid=UQ9dALr8vIULdM&w=1400&h=758&q=chicago%20taxi%20dataset&safe=active&ved=2ahUKEwjJzJyv2pGGAxXd3DgGHc1yB14QMygkegUIARCKAQ)
+![alt text](C:\Users\Shivaraj.S1\OneDrive - Brillio\Desktop\Github\Demo1_Chicago_taxi_trips\image)
 
 
 
