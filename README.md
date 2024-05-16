@@ -13,9 +13,9 @@ This project aims to build a machine learning pipeline using TensorFlow Extended
 The main files in this project are:
 
 1. `pipeline.ipynb`: This Jupyter Notebook file contains the code for creating and running the TFX pipeline.
-2. `taxi_constants.py`: This Python file defines various constants used in the pipeline, such as feature names, bucket counts, and label keys.
-3. `taxi_trainer.py`: This Python file contains the code for building and training the machine learning model.
-4. `taxi_transform.py`: This Python file defines the preprocessing steps for transforming the raw data into a format suitable for model training.
+2. `constants.py`: This Python file defines various constants used in the pipeline, such as feature names, bucket counts, and label keys.
+3. `trainer.py`: This Python file contains the code for building and training the machine learning model.
+4. `transform.py`: This Python file defines the preprocessing steps for transforming the raw data into a format suitable for model training.
 
 ## Prerequisites/Requirements
 
@@ -89,10 +89,10 @@ In our project, we use some constants and keys to make things work. Here they ar
 
 ### Trainer and Transformer
 
-- `taxi_trainer.py`: This file trains our machine to learn from the data.
-- `taxi_transform.py`: It transforms the data into a form the machine can understand better.
+- `trainer.py`: This file trains our machine to learn from the data.
+- `transform.py`: It transforms the data into a form the machine can understand better.
 
-## `taxi_constants.py`
+## `constants.py`
 
 This file defines various constants used throughout the project. Let's break down the key components:
 
@@ -108,7 +108,7 @@ This file defines various constants used throughout the project. Let's break dow
 
 These constants provide essential information for data preprocessing and model training.
 
-## `taxi_transform.py`
+## `transform.py`
 
 This file contains the preprocessing functions required to transform raw input data into a format suitable for model training. Here's a breakdown of its functionality:
 
@@ -123,7 +123,7 @@ This file contains the preprocessing functions required to transform raw input d
 
 These preprocessing steps ensure that the input data is properly formatted and ready for model training.
 
-## `taxi_trainer.py`
+## `trainer.py`
 
 This file contains the training logic for the machine learning model. Let's explore its key components:
 
