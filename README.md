@@ -12,17 +12,29 @@ This project aims to build a machine learning pipeline using TensorFlow Extended
 
 The main files in this project are:
 `.`
+
 `├── Assets/`
+
 `│   └── images/`
+
 `│`
+
 `├── tfx_training_pipeline/`
+
 `│   ├── pipeline.ipynb`
+
 `│   ├── taxi_constants.py`
+
 `│   ├── taxi_trainer.py`
+
 `│   └── taxi_transform.py`
+
 `│`
+
 `├── AutoML.ipynb`
+
 `|`
+
 `└── README.md`
 
 
