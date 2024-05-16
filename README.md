@@ -1,7 +1,7 @@
 
 # Chicago Taxi Fare Prediction
 
-![alt text](https://github.com/shivaraj-brillio/Demo1_Chicago_taxi_trips/blob/main/image/chicago_taxi.jpg)
+![alt text](https://github.com/shivaraj-brillio/Demo1_Chicago_taxi_trips/blob/main/Assets/Images/chicago_taxi.jpg)
 
 
 
