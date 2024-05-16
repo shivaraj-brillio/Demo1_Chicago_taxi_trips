@@ -11,11 +11,27 @@
 This project aims to build a machine learning pipeline using TensorFlow Extended (TFX) to predict the costs of customer trips in advance in Chicago . The pipeline includes several components such as data ingestion, data validation, data preprocessing, model training, model evaluation, and model deployment.
 
 The main files in this project are:
+.
+├── Assets/
+│   └── images/
+│
+├── tfx_training_pipeline/
+│   ├── pipeline.ipynb
+│   ├── taxi_constants.py
+│   ├── taxi_trainer.py
+│   └── taxi_transform.py
+│
+├── AutoML.ipynb
+|
+└── README.md
+
+
 
 1. `pipeline.ipynb`: This Jupyter Notebook file contains the code for creating and running the TFX pipeline.
 2. `constants.py`: This Python file defines various constants used in the pipeline, such as feature names, bucket counts, and label keys.
 3. `trainer.py`: This Python file contains the code for building and training the machine learning model.
 4. `transform.py`: This Python file defines the preprocessing steps for transforming the raw data into a format suitable for model training.
+5. automl.ipynb: This Jupyter Notebook file demonstrates the use of Google Cloud AutoML for training and deploying a model without extensive coding.
 
 ## Prerequisites/Requirements
 
