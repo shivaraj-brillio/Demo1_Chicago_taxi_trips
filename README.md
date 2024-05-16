@@ -1,6 +1,11 @@
 
 # Chicago Taxi Fare Prediction
 
+![alt text](https://www.google.com/imgres?imgurl=https%3A%2F%2Fmiro.medium.com%2Fv2%2Fresize%3Afit%3A1400%2F0*p5J5Yvcd7PMfq5dA.jpg&tbnid=7dp4G5rgh4-JrM&vet=12ahUKEwjJzJyv2pGGAxXd3DgGHc1yB14QMygkegUIARCKAQ..i&imgrefurl=https%3A%2F%2Fmedium.com%2F%40yennhi95zz%2Fexploring-the-chicago-taxi-trips-dataset-visualizations-on-tableau-74b4b7fffb44&docid=UQ9dALr8vIULdM&w=1400&h=758&q=chicago%20taxi%20dataset&safe=active&ved=2ahUKEwjJzJyv2pGGAxXd3DgGHc1yB14QMygkegUIARCKAQ)
+
+
+
+
 ## Introduction
 
 This project aims to build a machine learning pipeline using TensorFlow Extended (TFX) to predict the costs of customer trips in advance in Chicago . The pipeline includes several components such as data ingestion, data validation, data preprocessing, model training, model evaluation, and model deployment.
@@ -68,10 +73,6 @@ export GCS_BUCKET_NAME=YOUR_BUCKET_NAME
 
 3. Once the pipeline execution is complete, you can check the results in your Google Cloud Storage bucket and Google Cloud Vertex AI.
 
-## Additional Resources
-
-- TensorFlow Extended (TFX) Documentation: [https://www.tensorflow.org/tfx](https://www.tensorflow.org/tfx)
-- Google Cloud Vertex AI Documentation: [https://cloud.google.com/vertex-ai/docs](https://cloud.google.com/vertex-ai/docs)
 
 ## Additional Information
 
@@ -134,3 +135,9 @@ This file contains the training logic for the machine learning model. Let's expl
 - **run_fn**: Trains the model based on the provided arguments, including data accessors, transform output, and training settings.
 
 This file orchestrates the model training process, including data preprocessing, model construction, training, and exporting for serving.
+
+
+## Additional Resources
+
+- TensorFlow Extended (TFX) Documentation: [https://www.tensorflow.org/tfx](https://www.tensorflow.org/tfx)
+- Google Cloud Vertex AI Documentation: [https://cloud.google.com/vertex-ai/docs](https://cloud.google.com/vertex-ai/docs)
