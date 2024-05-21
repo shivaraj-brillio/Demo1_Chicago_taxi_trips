@@ -3,6 +3,7 @@
 
 - [Predicting Customer Trip Costs in Chicago using TensorFlow Extended (TFX)](#predicting-customer-trip-costs-in-chicago-using-tensorflow-extended-tfx)
   - [Table of Contents](#table-of-contents)
+- [About the Dataset](#about-the-dataset)
 - [Chapter 1: Introduction to AutoML and Project Overview](#chapter-1-introduction-to-automl-and-project-overview)
 - [Chapter 2: Data Transformation and Preprocessing with TFX](#chapter-2-data-transformation-and-preprocessing-with-tfx)
   - [Importing Necessary Modules](#importing-necessary-modules)
@@ -74,6 +75,27 @@
   - [Example Usage](#example-usage)
 
   - [Conclusion](#conclusion)
+
+---
+
+## About the Dataset
+**Data Source and Description:**
+
+The dataset used for this project is the Chicago Taxi Trips dataset, which is available on Google Cloud's BigQuery platform. This dataset contains information about taxi trips in the city of Chicago, including details such as trip start and end times, pickup and dropoff locations, trip distances, and fare amounts. The dataset is anonymized and does not contain any personally identifiable information about passengers or drivers.
+
+**Data Relevance and Applications:**
+
+The Chicago Taxi Trips dataset is highly relevant for the task of predicting taxi fare costs in Chicago using TensorFlow Extended (TFX). By analyzing the patterns and trends in the dataset, it is possible to build a machine learning model that can accurately predict the cost of a taxi trip based on factors such as the time of day, the distance traveled, and the location of the pickup and dropoff points.
+
+This type of fare prediction system has a wide range of potential applications. For example, it could be used by taxi companies to provide more accurate fare estimates to their customers, which could help to improve customer satisfaction and reduce the number of disputes over fare amounts. It could also be used by passengers to compare the costs of different transportation options, such as taxis, ridesharing services, and public transit, and make more informed decisions about how to get around the city.
+
+**Data Considerations and Limitations:**
+
+While the Chicago Taxi Trips dataset is a valuable resource for fare prediction, there are some important considerations and limitations to keep in mind. For example, the dataset only covers taxi trips, and does not include information about ridesharing services such as Uber and Lyft, which are also popular in Chicago. As a result, the fare prediction model may not be as accurate for these types of trips.
+
+Additionally, the dataset only includes information about trips that were completed and paid for, and does not include information about trips that were canceled or not paid for. This could potentially introduce some bias into the dataset, as it may not be representative of all types of taxi trips.
+
+Finally, it is important to note that the fare prediction model is based on historical data, and may not be able to accurately predict fare amounts in situations where there are unexpected events or changes in the market, such as a sudden increase in demand for taxis due to a major event or a change in the pricing policies of taxi companies.
 
 ---
 
