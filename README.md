@@ -16,10 +16,11 @@ The main files in this project are:
   - images
 - tfx_training_pipeline
   - pipeline.ipynb
-  - taxi_constants.py
-  - taxi_trainer.py
-  - taxi_transform.py
+  - constants.py
+  - trainer.py
+  - transform.py
 - AutoML.ipynb
+- client.py
 - README.md
 
 
