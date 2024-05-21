@@ -4,77 +4,29 @@
 - [Predicting Customer Trip Costs in Chicago using TensorFlow Extended (TFX)](#predicting-customer-trip-costs-in-chicago-using-tensorflow-extended-tfx)
   - [Table of Contents](#table-of-contents)
 - [About the Dataset](#about-the-dataset)
-- [Chapter 1: Introduction to AutoML and Project Overview](#chapter-1-introduction-to-automl-and-project-overview)
-- [Chapter 2: Data Transformation and Preprocessing with TFX](#chapter-2-data-transformation-and-preprocessing-with-tfx)
+- [ 1: Introduction to AutoML and Project Overview](#-1-introduction-to-automl-and-project-overview)
+- [ 2: Data Transformation and Preprocessing with TFX](#-2-data-transformation-and-preprocessing-with-tfx)
   - [Importing Necessary Modules](#importing-necessary-modules)
   - [Loading Constants](#loading-constants)
   - [Helper Functions for Data Preprocessing](#helper-functions-for-data-preprocessing)
     - [Handling Categorical Features](#handling-categorical-features)
     - [Filling Missing Values](#filling-missing-values)
   - [Main Preprocessing Function](#main-preprocessing-function)
-- [Chapter 3: Building and Training the Model with TFX](#chapter-3-building-and-training-the-model-with-tfx)
+- [ 3: Building and Training the Model with TFX](#-3-building-and-training-the-model-with-tfx)
   - [Importing Necessary Modules](#importing-necessary-modules-1)
   - [Defining Input Function](#defining-input-function)
   - [Defining Model Functions](#defining-model-functions)
     - [Building the Model](#building-the-model)
     - [Training the Model](#training-the-model)
-- [Chapter 4: Defining Constants for Feature Engineering](#chapter-4-defining-constants-for-feature-engineering)
+- [ 4: Defining Constants for Feature Engineering](#-4-defining-constants-for-feature-engineering)
   - [Feature Constants](#feature-constants)
   - [Bucketizing Constants](#bucketizing-constants)
   - [Categorical Feature Constants](#categorical-feature-constants)
   - [Other Constants](#other-constants)
-- [Chapter 5: Making Predictions with a Deployed Model on Google Cloud AI Platform](#chapter-5-making-predictions-with-a-deployed-model-on-google-cloud-ai-platform)
+- [ 5: Making Predictions with a Deployed Model on Google Cloud AI Platform](#-5-making-predictions-with-a-deployed-model-on-google-cloud-ai-platform)
   - [Prediction Function](#prediction-function)
   - [Example Usage](#example-usage)
   - [Conclusion](#conclusion)
-
-  - [Table of Contents](#table-of-contents)
-
-- [Chapter 1: Introduction to AutoML and Project Overview](#chapter-1-introduction-to-automl-and-project-overview)
-
-- [Chapter 2: Data Transformation and Preprocessing with TFX](#chapter-2-data-transformation-and-preprocessing-with-tfx)
-
-  - [Importing Necessary Modules](#importing-necessary-modules)
-
-  - [Loading Constants](#loading-constants)
-
-  - [Helper Functions for Data Preprocessing](#helper-functions-for-data-preprocessing)
-
-    - [Handling Categorical Features](#handling-categorical-features)
-
-    - [Filling Missing Values](#filling-missing-values)
-
-  - [Main Preprocessing Function](#main-preprocessing-function)
-
-- [Chapter 3: Building and Training the Model with TFX](#chapter-3-building-and-training-the-model-with-tfx)
-
-  - [Importing Necessary Modules](#importing-necessary-modules-1)
-
-  - [Defining Input Function](#defining-input-function)
-
-  - [Defining Model Functions](#defining-model-functions)
-
-    - [Building the Model](#building-the-model)
-
-    - [Training the Model](#training-the-model)
-
-- [Chapter 4: Defining Constants for Feature Engineering](#chapter-4-defining-constants-for-feature-engineering)
-
-  - [Feature Constants](#feature-constants)
-
-  - [Bucketizing Constants](#bucketizing-constants)
-
-  - [Categorical Feature Constants](#categorical-feature-constants)
-
-  - [Other Constants](#other-constants)
-
-- [Chapter 5: Making Predictions with a Deployed Model on Google Cloud AI Platform](#chapter-5-making-predictions-with-a-deployed-model-on-google-cloud-ai-platform)
-
-  - [Prediction Function](#prediction-function)
-
-  - [Example Usage](#example-usage)
-
-  - [Conclusion](#conclusion)
 
 ---
 
@@ -99,7 +51,7 @@ Finally, it is important to note that the fare prediction model is based on hist
 
 ---
 
-## Chapter 1: Introduction to AutoML and Project Overview
+##  1: Introduction to AutoML and Project Overview
 
 In this comprehensive guide, we will delve into the world of Automated Machine Learning (AutoML) and explore how to transform raw data into valuable insights using sophisticated machine learning models. Our journey begins with understanding the basics of AutoML and the overview of a project that aims to build a machine learning pipeline using TensorFlow Extended (TFX) to predict the costs of customer trips in advance in Chicago.
 
@@ -107,7 +59,7 @@ The project pipeline includes several components such as data ingestion, data va
 
 ---
 
-## Chapter 2: Data Transformation and Preprocessing with TFX
+##  2: Data Transformation and Preprocessing with TFX
 
 In the realm of machine learning, data preprocessing is a crucial step that prepares raw data for modeling. The `transformer.py` file is designed to handle this task efficiently using TFX. It leverages TensorFlow and TensorFlow Transform to preprocess and transform input data.
 
@@ -341,7 +293,7 @@ By understanding the inner workings of these functions, we gain insights into ho
 
 ---
 
-## Chapter 3: Building and Training the Model with TFX
+##  3: Building and Training the Model with TFX
 
 Once the data is preprocessed and transformed, the next step is to build and train a machine learning model. This process is implemented in the `trainer.py` file using TFX. Let's explore how this file facilitates model building and training.
 
@@ -509,7 +461,7 @@ This function first loads the output of TensorFlow Transform and creates trainin
 
 ---
 
-## Chapter 4: Defining Constants for Feature Engineering
+##  4: Defining Constants for Feature Engineering
 
 The `constants.py` file defines various constants used throughout the AutoML project. These constants include lists of numerical, bucketized, and categorical features, as well as vocabulary size, out-of-vocabulary bucket count, and keys for label and fare columns in the input data.
 
@@ -603,7 +555,7 @@ By defining these constants, the `constants.py` file provides a centralized loca
 
 ---
 
-## Chapter 5: Making Predictions with a Deployed Model on Google Cloud AI Platform
+##  5: Making Predictions with a Deployed Model on Google Cloud AI Platform
 
 Once a machine learning model is trained, the next step is to deploy it for making predictions on new data. The `client.py` script demonstrates how to make predictions using a deployed model on Google Cloud AI Platform.
 
