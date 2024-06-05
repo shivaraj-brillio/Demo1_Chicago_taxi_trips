@@ -94,12 +94,12 @@ export GCS_BUCKET_NAME=YOUR_BUCKET_NAME
 
 In our project, we use some constants and keys to make things work. Here they are:
 
-- **Numerical Features**: These are numbers like miles, fare, and seconds.
+- **Numerical Features**:  like miles, fare, and seconds.
 - **Bucket Features**: Features related to location like pickup and dropoff points.
 - **Categorical Numerical Features**: Numbers represented in categories, like hours and months.
 - **Categorical String Features**: Strings that represent categories, like payment type and company.
 - **Label Key**: This tells us whether the passenger tipped more than 20% or not.
-- **Fare Key**: Helps us know the fare of the taxi ride.
+- **Fare Key**: Fare price of the taxi ride.
 
 ### Trainer and Transformer
 
